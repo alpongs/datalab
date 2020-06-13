@@ -63,16 +63,40 @@ public class LinkedListExample {
 
     // 인덱스로 해당 노드의 정보를 얻고자 할때 사용한다.
     public Node getIndex(int index) {
-        return null;
+        int count = 0;
+        if (0 > index || size() < index) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        Node first = getHeader();
+        if (index == 0) {
+            return first;
+        }
+
+        while (first != null) {
+            if (count == index) {
+                return first;
+            }
+            first = first.getNext();
+            count++;
+        }
+        throw new IndexOutOfBoundsException();
     }
 
     // 데이터중 동일한 data 값의 노드를 찾아 가져와라.
     public Node getValue(int data) {
+        Node first = getHeader();
+        while (first != null) {
+            if (first.data == data) {
+                return first;
+            }
+            first = first.getNext();
+        }
         return null;
     }
 
     // Header 결
-    public void addFirs(int data) {
+    public void addFirst(int data) {
 
     }
 
