@@ -97,7 +97,9 @@ public class LinkedListExample {
 
     // Header 결
     public void addFirst(int data) {
-
+        Node addFirst = Node.create(data);
+        addFirst.next = header;
+        header = addFirst;
     }
 
     public void remove() {

@@ -44,6 +44,10 @@ class LinkedListExampleTest {
 
     @Test
     void addFirst() {
+        ll.retrieve(); // TODO:: 1 -> 2 -> 3 -> 4 -> 5
+        ll.addFirst(9);
+        ll.retrieve(); //TODO:: 9 -> 1 -> 2 -> 3 -> 4 -> 5
+        Assertions.assertEquals(ll.size(), 6);
     }
 
     @Test
@@ -54,7 +58,4 @@ class LinkedListExampleTest {
     void removeFirst() {
     }
 
-    @Test
-    void size() {
-    }
 }
