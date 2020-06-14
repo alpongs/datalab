@@ -22,6 +22,7 @@ public class LinkedListExample {
     }
 
     static class Node {
+
         int data;
         Node next;
 
@@ -73,8 +74,8 @@ public class LinkedListExample {
         if (index == 0) {
             return first;
         }
-        for(int i = 0; i< size(); i++){
-            if(count == index){
+        for (int i = 0; i < size(); i++) {
+            if (count == index) {
                 return first;
             }
             first = first.getNext();
@@ -114,9 +115,9 @@ public class LinkedListExample {
 
     public void remove() {
         // delete the last node
-        Node header =getHeader();
+        Node header = getHeader();
         Node rear = getLast();
-        while (header.next != rear){ // see if next is last
+        while (header.next != rear) { // see if next is last
             header = header.next;
         }
         header.next = null; // reached here = meaning next one is the last node
@@ -126,7 +127,7 @@ public class LinkedListExample {
     public void removeFirst() {
         // remove the first node
         Node header = getHeader();
-        if(size()<=0){
+        if (size() <= 0) {
             throw new IndexOutOfBoundsException("there is nothing to delete");
         }
         setHeader(header.next);
@@ -135,7 +136,9 @@ public class LinkedListExample {
 
     public int size() {
         // 노드의 개수를 반환하시오.
-        if (header == null) return 0;
+        if (header == null) {
+            return 0;
+        }
         int result = 0;
         Node first = getHeader();
         while (first != null) {
