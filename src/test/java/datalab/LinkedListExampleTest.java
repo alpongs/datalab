@@ -52,10 +52,18 @@ class LinkedListExampleTest {
 
     @Test
     void remove() {
+        ll.retrieve(); // TODO:: 1 -> 2 - > 3 - > 4 -> 5
+        ll.remove();
+        ll.retrieve(); // TODO:: 1 -> 2 -> 3 -> 4
+        Assertions.assertEquals(ll.size(), 4);
     }
 
     @Test
     void removeFirst() {
+        ll.retrieve(); //TODO: 1 -> 2 -> 3 -> 4 -> 5
+        ll.removeFirst();
+        ll.retrieve(); //Todo 2 -> 3 -> 4 -> 5
+        Assertions.assertEquals(ll.size(), 4);
     }
 
 }

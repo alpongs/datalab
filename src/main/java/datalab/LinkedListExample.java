@@ -62,28 +62,37 @@ public class LinkedListExample {
     }
 
     // 인덱스로 해당 노드의 정보를 얻고자 할때 사용한다.
+    // change it to for loop
     public Node getIndex(int index) {
         int count = 0;
         if (0 > index || size() < index) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("size less than index / index can't be less than 0");
         }
 
         Node first = getHeader();
         if (index == 0) {
             return first;
         }
-
-        while (first != null) {
-            if (count == index) {
+        for(int i = 0; i< size(); i++){
+            if(count == index){
                 return first;
             }
             first = first.getNext();
             count++;
+
+
         }
         throw new IndexOutOfBoundsException();
     }
+//    while (first != null) {
+//        if (count == index) {
+//            return first;
+//        }
+//        first = first.getNext();
+//        count++;
 
     // 데이터중 동일한 data 값의 노드를 찾아 가져와라.
+
     public Node getValue(int data) {
         Node first = getHeader();
         while (first != null) {
@@ -95,6 +104,7 @@ public class LinkedListExample {
         return null;
     }
 
+
     // Header 결
     public void addFirst(int data) {
         Node addFirst = Node.create(data);
@@ -103,11 +113,24 @@ public class LinkedListExample {
     }
 
     public void remove() {
-        // 맨 마지막 노드를 지워요.
+        // delete the last node
+        Node header =getHeader();
+        Node rear = getLast();
+        while (header.next != rear){ // see if next is last
+            header = header.next;
+        }
+        header.next = null; // reached here = meaning next one is the last node
+
     }
 
     public void removeFirst() {
-        // 첫 번째 노드를 지워요.
+        // remove the first node
+        Node header = getHeader();
+        if(size()<=0){
+            throw new IndexOutOfBoundsException("there is nothing to delete");
+        }
+        setHeader(header.next);
+
     }
 
     public int size() {
