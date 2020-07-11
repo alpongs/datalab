@@ -1,5 +1,7 @@
 package datalab;
 
+import java.util.EmptyStackException;
+
 class Stack<T> {
 
     class Node<T> {
@@ -35,14 +37,28 @@ class Stack<T> {
      * @throws : EmptyStackException()
      */
     public T pop() {
-        return null;
+        if (top == null) {
+            throw new EmptyStackException();
+        }
+        T data = top.data;
+        top = top.next;
+        return data;
     }
 
     /**
      * 스택에 넣는 값.
+     * TODO :: push -> newNode
+     * TODO :: newNode -> 잠재적으로 TOP
+     * TODO :: newNode -> TOP -> 이전의 TOP 알아야 되요.(pop -> 다음의 노드를 알아야 되여.)
      */
     public void push(T item) {
+        Node<T> newNode = new Node<>(item); //  TOP
 
+        if (top != null) {
+
+            newNode.next = top;
+        }
+        top = newNode;
     }
 
     /**
@@ -51,7 +67,11 @@ class Stack<T> {
      * @return 저장된 객체를 반환.
      */
     public T peek() {
-        return null;
+        if (top == null) {
+            throw new EmptyStackException();
+        }
+
+        return top.data;
     }
 
     /**
@@ -60,7 +80,8 @@ class Stack<T> {
      * @return true / false 처리.
      */
     public boolean isEmpty() {
-        return true;
+
+        return (top == null);
     }
 
     /**
@@ -78,7 +99,15 @@ class Stack<T> {
      * @return Object().size() 크기 만큼 반환.
      */
     public int size() {
-        return 0;
+        int total = 0;
+
+        Node count = top;
+        while (count != null) {
+            total++;
+            count = count.next;
+        }
+
+        return total;
     }
 
 }
