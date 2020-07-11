@@ -5,9 +5,9 @@ class Queue<T> {
         T item;
         Node<T> next;
 
-        public Node(T item, Node<T> next) {
+        public Node(T item) {
             this.item = item;
-            this.next = next;
+            this.next = null;
         }
     }
 
@@ -15,7 +15,15 @@ class Queue<T> {
     private Node<T> last;
 
     public void push(T item) {
-
+        Node<T> newNode = new Node<>(item);
+        if(last ==null){
+            first = newNode;
+        }
+        else{
+            Node n_last = last;
+            n_last.next = newNode;
+        }
+        last = newNode;
     }
 
     public T pop() {
