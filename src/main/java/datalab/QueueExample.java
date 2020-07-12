@@ -1,21 +1,23 @@
 package datalab;
 
-class Queue<T> {
-    class Node<T> {
-        T item;
-        Node<T> next;
+import java.util.EmptyStackException;
 
-        public Node(T item) {
+class Queue {
+    class Node {
+        int item;
+        Node next;
+
+        public Node(int item) {
             this.item = item;
             this.next = null;
         }
     }
 
-    private Node<T> first;
-    private Node<T> last;
+    private Node first;
+    private Node last;
 
-    public void push(T item) {
-        Node<T> newNode = new Node<>(item);
+    public void push(int item) {
+        Node newNode = new Node(item);
         if(last ==null){
             first = newNode;
         }
@@ -26,12 +28,28 @@ class Queue<T> {
         last = newNode;
     }
 
-    public T pop() {
-        return null;
+    public int pop() {
+
+        if( first == null){
+            throw new EmptyStackException();
+        }
+        Node poped = first;
+        first = poped.next;
+
+        return poped.item;
     }
 
-    public T peek() {
-        return null;
+    public int peek() {
+
+        return 0;
+    }
+    public int size(){
+        int size = 0;
+        while(first!=null){
+            size++;
+            first = first.next;
+        }
+        return size;
     }
 }
 
